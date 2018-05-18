@@ -1,0 +1,36 @@
+{% extends 'blog/base.html' %}
+{% block title %}达摩武僧的博客{% endblock %}
+
+
+{% block content %}
+
+
+            <!--<img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">-->
+       {% for post in posts %}
+           <div class="card mb-4">
+           <div class="card-body">
+              <h2 class="card-title"><a href="{{ post.get_absolute_url }}"> {{ post.title }}</a></h2>
+              <p class="card-text"> {{ post.body|truncatechars:150 }} </p>
+               <a href="{{ post.get_absolute_url }}" class="btn btn-primary">阅读更多 &rarr;</a>
+            </div>
+            <div class="card-footer text-muted">
+              {{ post.created_data }} by
+              <a href="#">{{ post.author }}</a>
+            </div>
+          </div>
+
+       {% endfor %}
+
+<!-- Pagination -->
+          <ul class="pagination justify-content-center mb-4">
+            <li class="page-item">
+              <a class="page-link" href="#">&larr; 上一页</a>
+            </li>
+            <li class="page-item disabled">
+              <a class="page-link" href="#">下一页 &rarr;</a>
+            </li>
+          </ul>
+
+        </div>
+
+{% endblock %}
